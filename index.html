@@ -168,7 +168,7 @@
     html[lang="fr"] .inline-fr, html[lang="en"] .inline-en { display: inline; }
     html[lang="fr"] .inline-en, html[lang="en"] .inline-fr { display: none; }
     @media (max-width: 1100px) {
-      .hero, .about-grid, .expertise-grid, .experience-grid, .projects-grid, .opps-grid, .figures-grid { grid-template-columns: 1fr; }
+      .hero, .about-grid, .expertise-grid, .experience-grid, .projects-grid, .opps-grid, .figures-grid, .certifications-grid { grid-template-columns: 1fr; }
       .hero-inset-photo{
         position: relative;
         top: auto;
@@ -239,6 +239,57 @@
       line-height: 1.4;
     }
 
+  
+    .certifications-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:22px;
+    }
+    .cert-card{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+    .cert-title{
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .cert-subtitle{
+      color: var(--ink-soft);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .cert-image-wrap{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #faf8f4;
+      margin-top: 14px;
+    }
+    .cert-image-wrap img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cert-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+    .cert-badge{
+      background: var(--tag-bg);
+      color: var(--ink-soft);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
   </style>
 </head>
 <body>
@@ -249,8 +300,10 @@
         <li><a href="#home"><span class="inline-fr">Accueil</span><span class="inline-en">Home</span></a></li>
         <li><a href="#about"><span class="inline-fr">À propos</span><span class="inline-en">About</span></a></li>
         <li><a href="#expertise"><span class="inline-fr">Expertise</span><span class="inline-en">Expertise</span></a></li>
+        <li><a href="#certifications"><span class="inline-fr">Certifs</span><span class="inline-en">Certs</span></a></li>
         <li><a href="#experience"><span class="inline-fr">Expérience</span><span class="inline-en">Experience</span></a></li>
         <li><a href="#projects"><span class="inline-fr">Projets</span><span class="inline-en">Projects</span></a></li>
+        <li><a href="#languages"><span class="inline-fr">Langues</span><span class="inline-en">Languages</span></a></li>
         <li><a href="#contact"><span class="inline-fr">Contact</span><span class="inline-en">Contact</span></a></li>
       </ul>
       <div class="lang-switch">
@@ -285,7 +338,7 @@
       <div class="hero-contacts">
         <a href="mailto:khamassi.farah@gmail.com" class="contact-chip">khamassi.farah@gmail.com</a>
         <a href="https://www.linkedin.com/in/farah-khamassi-081b9764/" target="_blank" class="contact-chip">LinkedIn</a>
-        <span class="contact-chip"><span class="inline-fr">Mobile France / Luxembourg / Europe</span><span class="inline-en">Open to France / Luxembourg / Europe</span></span>
+        <span class="contact-chip"><span class="inline-fr">Mobile France / Luxembourg / Europe / Canada</span><span class="inline-en">Open to France / Luxembourg / Europe / Canada</span></span>
       </div>
     </div>
 
@@ -417,6 +470,33 @@
     </div>
   </section>
 
+
+  <section id="certifications">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title"><span class="inline-fr">Certifications</span><span class="inline-en">Certifications</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <div class="cert-title">Management 3.0</div>
+        <p class="cert-subtitle" data-lang="fr">Approche moderne du leadership et du management collaboratif. Certification mise en avant dans ton portfolio historique et dans ton CV. </p>
+        <p class="cert-subtitle" data-lang="en">Modern leadership and collaborative management approach. Highlighted in your previous portfolio and resume. Place the certificate image in the same folder as this HTML </p>
+        <div class="cert-badges">
+          <span class="cert-badge">Leadership</span>
+          <span class="cert-badge">Agile Mindset</span>
+          <span class="cert-badge">Team Empowerment</span>
+          <span class="cert-badge">2024</span>
+        </div>
+        <div class="hero-buttons" style="margin-top:16px;">
+          <a class="btn" href="management-3-certificate.pdf" target="_blank">
+            <span class="inline-fr">Voir le PDF du certificat</span><span class="inline-en">Open Certificate PDF</span>
+          </a>
+        </div>
+      </div>
+      </div>
+  </section>
+
   <section id="figures">
     <div class="section-header">
       <span class="section-num">03</span>
@@ -532,7 +612,7 @@
 
   <section id="opportunities">
     <div class="section-header">
-      <span class="section-num">06</span>
+      <span class="section-num">08</span>
       <h2 class="section-title"><span class="inline-fr">Opportunités</span><span class="inline-en">Open to Opportunities</span></h2>
       <div class="section-line"></div>
     </div>
@@ -557,15 +637,15 @@
       </div>
       <div class="card">
         <h3><span class="inline-fr">Mobilité</span><span class="inline-en">Mobility</span></h3>
-        <p data-lang="fr">Disponible pour des opportunités en France, au Luxembourg et en Europe, en environnement conseil, client final ou transformation digitale.</p>
-        <p data-lang="en">Open to opportunities across France, Luxembourg and Europe in consulting, end-client or digital transformation environments.</p>
+        <p data-lang="fr">Disponible pour des opportunités en France, au Luxembourg, en Europe et au Canada, en environnement conseil, client final ou transformation digitale.</p>
+        <p data-lang="en">Open to opportunities across France, Luxembourg, Europe and Canada in consulting, end-client or digital transformation environments.</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="section-header">
-      <span class="section-num">07</span>
+      <span class="section-num">09</span>
       <h2 class="section-title">Contact</h2>
       <div class="section-line"></div>
     </div>
