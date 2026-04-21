@@ -91,13 +91,21 @@
     }
 
     .hero-buttons, .hero-contacts { display: flex; flex-wrap: wrap; gap: 12px; }
+    
     .btn, .contact-chip {
       display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
-      padding: 10px 16px; font-size: 13px; font-weight: 600; border: 1px solid var(--line);
-      background: var(--surface); color: var(--ink-soft); transition: all .2s ease;
+      padding: 12px 18px; font-size: 13px; font-weight: 700; border: 1px solid var(--line);
+      background: var(--surface); color: var(--ink-soft); transition: all .25s ease; cursor:pointer;
     }
     .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-    .btn:hover, .contact-chip:hover { transform: translateY(-1px); border-color: var(--accent); color: var(--accent-dark); }
+    .btn:hover, .contact-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      border-color: var(--accent);
+      color: var(--accent-dark);
+    }
+    .btn.primary:hover { background:#111; color:#fff; }
+
     .hero-right, .card, .figure-card, .project-card, .contact-card {
       background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
     }
@@ -215,8 +223,8 @@
         11+ years of experience leading complex international projects, strategic delivery, digital transformation and regulated environments, including HR / HR Access initiatives and banking compliance projects (KYC / AML).
       </p>
       <div class="hero-buttons" style="margin-bottom:14px;">
-        <a class="btn primary" href="CV_Farah%20Khamassi%20FR%20-%202025.pdf" download><span class="inline-fr">Télécharger CV FR</span><span class="inline-en">Download CV FR</span></a>
-        <a class="btn" href="CV_Farah%20Khamassi%20EN%20-%202025.pdf" download><span class="inline-fr">Télécharger CV EN</span><span class="inline-en">Download CV EN</span></a>
+        <a class="btn primary" href="CV_Farah%20Khamassi%20FR%20-%202025.pdf" download>⬇ <span class="inline-fr">Télécharger CV FR</span><span class="inline-en">Download CV FR</span></a>
+        <a class="btn" href="CV_Farah%20Khamassi%20EN%20-%202025.pdf" download>⬇ <span class="inline-fr">Télécharger CV EN</span><span class="inline-en">Download CV EN</span></a>
         <a class="btn" href="#contact"><span class="inline-fr">Contact</span><span class="inline-en">Contact</span></a>
       </div>
       <div class="hero-contacts">
