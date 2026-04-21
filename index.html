@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Farah Khamassi — Portfolio Complet</title>
+  <title>Farah Khamassi — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f7f5f0;
@@ -19,11 +20,10 @@
       --tag-bg: #f0ede6;
       --success: #4caf7d;
       --shadow: 0 10px 30px rgba(0,0,0,0.05);
+      --max: 1180px;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -31,1296 +31,428 @@
       font-size: 15px;
       line-height: 1.7;
     }
-
     a { text-decoration: none; color: inherit; }
-
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      height: 68px;
-      background: rgba(247,245,240,0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 42px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px;
+      background: rgba(247,245,240,0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 42px;
     }
-
-    .nav-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--ink);
+    .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-links { display: flex; list-style: none; gap: 24px; }
+    .nav-links a, .lang-btn {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--ink-soft); font-weight: 700; cursor: pointer; background: none; border: none;
     }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--ink-soft);
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover { color: var(--accent-dark); }
-
+    .lang-switch { display: flex; gap: 8px; align-items: center; border-left: 1px solid var(--line); padding-left: 18px; }
+    .lang-btn.active { color: var(--accent-dark); }
     .hero {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 136px 42px 72px;
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 42px;
-      align-items: end;
+      max-width: var(--max); margin: 0 auto; padding: 138px 42px 72px;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: end;
     }
-
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--ink);
-      color: var(--bg);
-      border-radius: 999px;
-      padding: 7px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      margin-bottom: 26px;
+      display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--bg);
+      border-radius: 999px; padding: 7px 14px; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.04em; margin-bottom: 22px;
     }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--success);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% { opacity: 1; }
-      50% { opacity: .35; }
-    }
-
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-dark);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); }
     .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(48px, 7vw, 78px);
-      font-weight: 300;
-      line-height: 1.02;
-      margin-bottom: 22px;
-    }
-
-    .hero-title {
-      font-size: 17px;
-      color: var(--ink-soft);
-      margin-bottom: 26px;
-      max-width: 700px;
-    }
-
-    .hero-title strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .hero-contacts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .contact-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 9px 15px;
-      font-size: 13px;
-      color: var(--ink-soft);
-      transition: all 0.2s ease;
-    }
-
-    .contact-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent-dark);
-      transform: translateY(-1px);
-    }
-
-    .contact-chip svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-
-    .hero-right {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 30px;
-      box-shadow: var(--shadow);
-    }
-
-    .stat-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-bottom: 22px;
-    }
-
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      line-height: 1;
-      font-weight: 300;
-    }
-
-    .stat-num span {
-      font-size: 24px;
-      color: var(--accent);
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-top: 6px;
-      letter-spacing: 0.03em;
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--line);
-      margin: 18px 0;
-    }
-
-    .lang-row,
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .lang-tag,
-    .mini-tag {
-      background: var(--tag-bg);
-      border-radius: 8px;
-      padding: 6px 11px;
-      font-size: 12px;
-      color: var(--ink-soft);
-      font-weight: 500;
-    }
-
-    .accent {
-      background: var(--accent-light);
-      color: var(--accent-dark);
-    }
-
-    section {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 76px 42px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 18px;
-      margin-bottom: 40px;
-    }
-
-    .section-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      color: var(--accent-dark);
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
-      font-weight: 400;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .about-grid,
-    .portfolio-intro,
-    .coverage-grid,
-    .history-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .about-text p,
-    .card p {
-      color: var(--ink-soft);
-      font-size: 15px;
-    }
-
-    .about-text p + p { margin-top: 14px; }
-
-    .highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .highlight-item {
-      border-left: 3px solid var(--accent);
-      background: #fcfaf6;
-      border-radius: 0 10px 10px 0;
-      padding: 14px 16px;
-    }
-
-    .highlight-item strong {
-      display: block;
-      font-size: 13px;
-      color: var(--ink);
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .highlight-item span {
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
-
-    .timeline {
-      position: relative;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 0;
-      width: 1px;
-      background: var(--line);
-    }
-
-    .exp-item {
-      position: relative;
-      padding-left: 38px;
-      margin-bottom: 40px;
-    }
-
-    .exp-item::before {
-      content: '';
-      position: absolute;
-      left: -4px;
-      top: 8px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 1px var(--accent);
-    }
-
-    .exp-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .exp-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    .exp-org {
-      color: var(--accent-dark);
-      font-size: 14px;
-      font-weight: 600;
-      margin-top: 3px;
-    }
-
-    .exp-date {
-      background: var(--tag-bg);
-      color: var(--ink-soft);
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .exp-body {
-      color: var(--ink-soft);
-      font-size: 14px;
-    }
-
-    .exp-body p { margin-bottom: 8px; }
-
-    .exp-tasks {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-top: 10px;
-    }
-
-    .exp-tasks li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .exp-tasks li::before {
-      content: '—';
-      color: var(--accent-dark);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .exp-refs {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .exp-refs-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--ink-soft);
-      font-weight: 700;
-    }
-
-    .ref-chip {
-      background: var(--tag-bg);
-      border-radius: 8px;
-      padding: 5px 10px;
-      font-size: 12px;
-      color: var(--ink-soft);
-      font-weight: 500;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-    }
-
-    .skill-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .skill-card p {
-      font-size: 14px;
-      color: var(--ink-soft);
-      margin-bottom: 14px;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-tag {
-      background: var(--tag-bg);
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 12px;
-      color: var(--ink-soft);
-      font-weight: 500;
-    }
-
-    .skill-tag.highlight {
-      background: var(--accent-light);
-      color: var(--accent-dark);
-    }
-
-    .check-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .check-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: var(--ink-soft);
-      font-size: 14px;
-    }
-
-    .check-list li::before {
-      content: '✓';
-      color: var(--accent-dark);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .table-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .table-card h3,
-    .coverage-card h3,
-    .history-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      margin-top: 18px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-    }
-
-    table {
-      width: 100%;
-      min-width: 980px;
-      border-collapse: collapse;
-      background: var(--surface);
-    }
-
-    thead th {
-      text-align: left;
-      padding: 14px 16px;
-      background: #faf8f4;
-      color: var(--ink-soft);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      border-bottom: 1px solid var(--line);
-    }
-
-    tbody td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-      color: var(--ink-soft);
-      font-size: 14px;
-    }
-
-    tbody tr:hover { background: #fcfbf8; }
-
-    .td-project {
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    .td-project small {
-      display: block;
-      margin-top: 4px;
-      color: var(--accent-dark);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .module-badges,
-    .country-badges,
-    .mini-tags-wrap,
-    .history-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .module-badges span,
-    .country-badges span,
-    .mini-tags-wrap span,
-    .history-row span {
-      background: var(--tag-bg);
-      color: var(--ink-soft);
-      border-radius: 8px;
-      padding: 5px 9px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .module-badges span.primary {
-      background: var(--accent-light);
-      color: var(--accent-dark);
-    }
-
-    .coverage-grid,
-    .history-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .coverage-card,
-    .history-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-
-    .portfolio-groups {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 24px;
-    }
-
-    .portfolio-group-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .portfolio-group-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .portfolio-project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .portfolio-project-item {
-      background: #fcfaf6;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px 16px;
-    }
-
-    .portfolio-project-item strong {
-      display: block;
-      color: var(--ink);
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .portfolio-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .portfolio-meta span {
-      background: var(--tag-bg);
-      color: var(--ink-soft);
-      border-radius: 999px;
-      padding: 4px 9px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 7vw, 78px);
+      line-height: 1.02; font-weight: 400; margin-bottom: 14px;
+    }
+    .hero-role {
+      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-dark); font-weight: 700; margin-bottom: 18px;
+    }
+    .hero-title { font-size: 18px; color: var(--ink-soft); margin-bottom: 22px; max-width: 760px; }
+    .hero-buttons, .hero-contacts { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn, .contact-chip {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+      padding: 10px 16px; font-size: 13px; font-weight: 600; border: 1px solid var(--line);
+      background: var(--surface); color: var(--ink-soft); transition: all .2s ease;
+    }
+    .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .btn:hover, .contact-chip:hover { transform: translateY(-1px); border-color: var(--accent); color: var(--accent-dark); }
+    .hero-right, .card, .figure-card, .project-card, .contact-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
+    }
+    .hero-right, .card, .figure-card, .project-card, .contact-card { padding: 26px; }
+    .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 20px; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; line-height: 1; }
+    .stat-label { margin-top: 6px; color: var(--ink-soft); font-size: 12px; letter-spacing: 0.03em; }
+    .divider { height: 1px; background: var(--line); margin: 18px 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: var(--tag-bg); color: var(--ink-soft); border-radius: 8px; padding: 6px 10px; font-size: 12px; font-weight: 600; }
+    section { max-width: var(--max); margin: 0 auto; padding: 74px 42px; }
+    .section-header { display: flex; align-items: baseline; gap: 18px; margin-bottom: 36px; }
+    .section-num { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--accent-dark); }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; }
+    .section-line { flex: 1; height: 1px; background: var(--line); }
+    .about-grid, .expertise-grid, .experience-grid, .projects-grid, .opps-grid, .contact-grid {
+      display: grid; gap: 22px;
+    }
+    .about-grid { grid-template-columns: 1.15fr 0.85fr; }
+    .expertise-grid { grid-template-columns: repeat(3, 1fr); }
+    .experience-grid { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .opps-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .card h3, .figure-card h3, .project-card h3, .contact-card h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 12px; font-weight: 600;
+    }
+    .card p, .project-card p, .contact-card p { color: var(--ink-soft); margin-bottom: 14px; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .bullet-list li { display: flex; gap: 8px; color: var(--ink-soft); }
+    .bullet-list li::before { content: '—'; color: var(--accent-dark); font-weight: 700; flex-shrink: 0; }
+    .figures-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .figure-value { font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; margin-bottom: 8px; }
+    .figure-label { color: var(--ink-soft); font-size: 12px; }
+    .job-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: 26px; box-shadow: var(--shadow);
+    }
+    .job-role { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; margin-bottom: 4px; }
+    .job-org { color: var(--accent-dark); font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+    .job-date {
+      display: inline-block; background: var(--tag-bg); border-radius: 999px;
+      padding: 5px 10px; font-size: 12px; color: var(--ink-soft);
+      margin-bottom: 14px; font-weight: 700;
+    }
+    .project-items { display: flex; flex-direction: column; gap: 12px; }
+    .project-item {
+      background: #fcfaf6; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+    }
+    .project-item strong { display: block; margin-bottom: 6px; }
+    .small-muted { color: var(--ink-soft); font-size: 14px; }
     footer {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 32px 42px 44px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      color: var(--ink-soft);
-      font-size: 13px;
+      max-width: var(--max); margin: 0 auto; padding: 26px 42px 40px; border-top: 1px solid var(--line);
+      color: var(--ink-soft); display: flex; justify-content: space-between; gap: 16px;
     }
-
-    .footer-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      color: var(--ink);
-      font-weight: 500;
+    [data-lang] { display: none; }
+    html[lang="fr"] [data-lang="fr"], html[lang="en"] [data-lang="en"] { display: block; }
+    html[lang="fr"] .inline-fr, html[lang="en"] .inline-en { display: inline; }
+    html[lang="fr"] .inline-en, html[lang="en"] .inline-fr { display: none; }
+    @media (max-width: 1100px) {
+      .hero, .about-grid, .expertise-grid, .experience-grid, .projects-grid, .opps-grid, .figures-grid { grid-template-columns: 1fr; }
     }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (max-width: 1024px) {
-      .hero,
-      .about-grid,
-      .portfolio-intro,
-      .grid-3,
-      .coverage-grid,
-      .history-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 108px 20px 44px;
-        gap: 26px;
-      }
-
-      section { padding: 52px 20px; }
-      footer {
-        padding: 24px 20px 34px;
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .stat-row,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
+      .hero { padding: 110px 20px 44px; }
+      section { padding: 54px 20px; }
+      footer { padding: 24px 20px 34px; flex-direction: column; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
-
   <nav>
-    <a class="nav-name" href="#">Farah Khamassi</a>
-    <ul class="nav-links">
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#experience">Parcours</a></li>
-      <li><a href="#expertise">Expertises</a></li>
-      <li><a href="#portfolio">Projets</a></li>
-      <li><a href="#references">Références</a></li>
-    </ul>
+    <a class="nav-name" href="#home">Farah Khamassi</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#home"><span class="inline-fr">Accueil</span><span class="inline-en">Home</span></a></li>
+        <li><a href="#about"><span class="inline-fr">À propos</span><span class="inline-en">About</span></a></li>
+        <li><a href="#expertise"><span class="inline-fr">Expertise</span><span class="inline-en">Expertise</span></a></li>
+        <li><a href="#experience"><span class="inline-fr">Expérience</span><span class="inline-en">Experience</span></a></li>
+        <li><a href="#projects"><span class="inline-fr">Projets</span><span class="inline-en">Projects</span></a></li>
+        <li><a href="#contact"><span class="inline-fr">Contact</span><span class="inline-en">Contact</span></a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
   </nav>
 
-  <header class="hero">
-    <div class="fade-in">
-      <div class="badge"><span class="badge-dot"></span> Disponible pour missions stratégiques</div>
-      <p class="hero-label">Senior Project Manager · Business Delivery Manager · Portfolio Delivery & Governance</p>
-      <h1 class="hero-name">Farah<br>Khamassi</h1>
-      <p class="hero-title">
-        <strong>Senior Project Manager et Delivery Manager spécialisée en transformation, gouvernance et pilotage de programmes compliance internationaux.</strong><br>
-        Plus de <strong>10 ans d’expérience</strong> en conduite de projets IT et métiers, avec un positionnement à l’interface entre <strong>stratégie, exécution et relation client</strong>. J’interviens sur des programmes internationaux à forts enjeux de <strong>delivery, gouvernance et transformation</strong>, avec des portefeuilles jusqu’à <strong>10 projets en parallèle</strong>, des équipes allant jusqu’à <strong>10 personnes</strong> et des budgets de <strong>100 K€ à 400 K€</strong>, dans des contextes <strong>multi-pays et multi-filiales</strong>.
+  <header class="hero" id="home">
+    <div>
+      <div class="badge"><span class="badge-dot"></span><span class="inline-fr">Disponible pour opportunités stratégiques</span><span class="inline-en">Open to strategic opportunities</span></div>
+      <p class="hero-role">
+        <span class="inline-fr">Chef de Projet Senior | Delivery Manager | Consultante Senior | Business Analyst</span>
+        <span class="inline-en">Senior Project Manager | Delivery Manager | Senior Consultant | Business Analyst</span>
       </p>
-
+      <h1 class="hero-name">Farah<br>Khamassi</h1>
+      <p class="hero-title" data-lang="fr">
+        11+ ans d’expérience en pilotage de projets complexes internationaux, delivery stratégique, transformation digitale et coordination d’environnements réglementés, incluant les projets RH / HR Access et la conformité bancaire (KYC / AML).
+      </p>
+      <p class="hero-title" data-lang="en">
+        11+ years of experience leading complex international projects, strategic delivery, digital transformation and regulated environments, including HR / HR Access initiatives and banking compliance projects (KYC / AML).
+      </p>
+      <div class="hero-buttons" style="margin-bottom:14px;">
+        <a class="btn primary" href="CV_Farah%20Khamassi%20FR%20-%202025.pdf" download><span class="inline-fr">Télécharger CV FR</span><span class="inline-en">Download CV FR</span></a>
+        <a class="btn" href="CV_Farah%20Khamassi%20EN%20-%202025.pdf" download><span class="inline-fr">Télécharger CV EN</span><span class="inline-en">Download CV EN</span></a>
+        <a class="btn" href="#contact"><span class="inline-fr">Contact</span><span class="inline-en">Contact</span></a>
+      </div>
       <div class="hero-contacts">
-        <a href="tel:+21622716187" class="contact-chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.76 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-          </svg>
-          +216 22 716 187
-        </a>
-
-        <a href="mailto:khamassi.farah@gmail.com" class="contact-chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
-          khamassi.farah@gmail.com
-        </a>
-
-        <a href="https://www.linkedin.com/in/farah-khamassi-081b9764/" class="contact-chip" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          LinkedIn
-        </a>
-
-        <span class="contact-chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          Ariana, Tunisie
-        </span>
+        <a href="mailto:khamassi.farah@gmail.com" class="contact-chip">khamassi.farah@gmail.com</a>
+        <a href="https://www.linkedin.com/in/farah-khamassi-081b9764/" target="_blank" class="contact-chip">LinkedIn</a>
+        <span class="contact-chip"><span class="inline-fr">Mobile France / Luxembourg / Europe</span><span class="inline-en">Open to France / Luxembourg / Europe</span></span>
       </div>
     </div>
 
-    <div class="hero-right fade-in">
+    <div class="hero-right">
       <div class="stat-row">
-        <div>
-          <div class="stat-num">10<span>+</span></div>
-          <div class="stat-label">Années d’expérience</div>
-        </div>
-        <div>
-          <div class="stat-num">22<span>+</span></div>
-          <div class="stat-label">Programmes compliance</div>
-        </div>
-        <div>
-          <div class="stat-num">10<span>+</span></div>
-          <div class="stat-label">Projets pilotés en parallèle</div>
-        </div>
-        <div>
-          <div class="stat-num">19<span>+</span></div>
-          <div class="stat-label">Pays et filiales couverts</div>
-        </div>
+        <div><div class="stat-num">11+</div><div class="stat-label"><span class="inline-fr">Années d’expérience</span><span class="inline-en">Years experience</span></div></div>
+        <div><div class="stat-num">30+</div><div class="stat-label"><span class="inline-fr">Clients accompagnés</span><span class="inline-en">Clients supported</span></div></div>
+        <div><div class="stat-num">19+</div><div class="stat-label"><span class="inline-fr">Pays couverts</span><span class="inline-en">Countries covered</span></div></div>
+        <div><div class="stat-num">10+</div><div class="stat-label"><span class="inline-fr">Personnes managées</span><span class="inline-en">Team members managed</span></div></div>
       </div>
-
       <div class="divider"></div>
-
-      <div style="font-size:12px; color:var(--ink-soft); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">Langues</div>
-      <div class="lang-row" style="margin-bottom:16px;">
-        <span class="lang-tag accent">Français — C1 (TCF)</span>
-        <span class="lang-tag accent">Anglais — B2</span>
-        <span class="lang-tag">Arabe — Courant</span>
-        <span class="lang-tag">Chinois — Notions</span>
-      </div>
-
-      <div style="font-size:12px; color:var(--ink-soft); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px;">Périmètres clés</div>
       <div class="tag-row">
-        <span class="mini-tag accent">KYC</span>
-        <span class="mini-tag accent">AML</span>
-        <span class="mini-tag accent">TFS</span>
-        <span class="mini-tag">FATCA</span>
-        <span class="mini-tag">HRAccess V3.e</span>
-        <span class="mini-tag">HRAccess V5</span>
-        <span class="mini-tag">HRAccess Suite 7</span>
-        <span class="mini-tag">HRAccess Suite 9</span>
-        <span class="mini-tag">Budgets 100–400 K€</span>
-        <span class="mini-tag">Delivery multi-pays</span>
-        <span class="mini-tag">10 projets en parallèle</span>
-        <span class="mini-tag">Gouvernance & comités</span>
+        <span class="tag">Ex Sopra HR Software</span>
+        <span class="tag">HR Access</span>
+        <span class="tag">HRIS / SIRH</span>
+        <span class="tag">KYC</span>
+        <span class="tag">AML</span>
+        <span class="tag"><span class="inline-fr">Projets multi-pays</span><span class="inline-en">Multi-country projects</span></span>
+        <span class="tag">Delivery</span>
+        <span class="tag">Business Analysis</span>
       </div>
     </div>
   </header>
 
   <section id="about">
-    <div class="section-header fade-in">
+    <div class="section-header">
       <span class="section-num">01</span>
-      <h2 class="section-title">À propos</h2>
+      <h2 class="section-title"><span class="inline-fr">À propos</span><span class="inline-en">About</span></h2>
       <div class="section-line"></div>
     </div>
-
     <div class="about-grid">
-      <div class="card about-text fade-in">
-        <p>
-          Ingénieure en informatique de formation, j’ai construit un parcours orienté <strong>pilotage, delivery management et gouvernance de programmes internationaux</strong> dans des environnements à forte complexité métier et organisationnelle.
-        </p>
-        <p>
-          Mon positionnement repose sur une double valeur : <strong>structurer l’exécution</strong> et <strong>sécuriser les résultats</strong>. J’interviens sur des programmes compliance et transformation en coordonnant les parties prenantes, les priorités, les ressources et les arbitrages nécessaires à la tenue des engagements.
-        </p>
-        <p>
-          J’ai piloté des <strong>portefeuilles jusqu’à 10 projets en parallèle</strong>, encadré des <strong>équipes jusqu’à 10 personnes</strong> et géré des <strong>budgets compris entre 100 K€ et 400 K€</strong>, avec comme impacts recherchés : meilleure visibilité de pilotage, réduction des risques d’escalade, fluidité de gouvernance, stabilité du delivery et <strong>satisfaction client renforcée</strong>.
-        </p>
+      <div class="card">
+        <h3><span class="inline-fr">Profil</span><span class="inline-en">Profile</span></h3>
+        <p data-lang="fr">Professionnelle senior orientée résultats, spécialisée dans le pilotage de projets critiques, la gestion du delivery, la coordination multi-interlocuteurs et l’accompagnement de transformations métier.</p>
+        <p data-lang="fr">Mon parcours combine deux expertises fortes : les environnements HRIS / HR Access et les projets de conformité bancaire (KYC / AML), avec un fil conducteur constant : gérer des projets complexes dans des contextes sensibles, réglementés et internationaux.</p>
+        <p data-lang="en">Results-driven senior professional specialized in critical project delivery, stakeholder coordination and business transformation.</p>
+        <p data-lang="en">My background combines two strong areas of expertise: HRIS / HR Access and banking compliance projects (KYC / AML), with a consistent focus on leading complex projects in sensitive, regulated and international environments.</p>
       </div>
-
-      <div class="highlights fade-in">
-        <div class="highlight-item">
-          <strong>Positionnement</strong>
-          <span>Senior Project Manager · Business Delivery Manager · Portfolio Delivery & Governance</span>
-        </div>
-        <div class="highlight-item">
-          <strong>Domaines majeurs</strong>
-          <span>Compliance, KYC, AML, TFS, FATCA, transformation RH, HRAccess</span>
-        </div>
-        <div class="highlight-item">
-          <strong>Envergure pilotée</strong>
-          <span>Jusqu’à 10 projets en parallèle, 10 personnes, 100 K€ à 400 K€</span>
-        </div>
-        <div class="highlight-item">
-          <strong>Certification</strong>
-          <span>Management 3.0 (2024)</span>
-        </div>
-        <div class="highlight-item">
-          <strong>Valeur apportée</strong>
-          <span>Structuration, gouvernance, sécurisation du delivery, satisfaction client et coordination multi-pays</span>
-        </div>
+      <div class="card">
+        <h3><span class="inline-fr">Pourquoi me recruter</span><span class="inline-en">Why hire me</span></h3>
+        <ul class="bullet-list" data-lang="fr">
+          <li>Double expertise rare : HRIS / HR Access + KYC / AML</li>
+          <li>Capacité à piloter delivery, gouvernance et équipes</li>
+          <li>Habitude des environnements multi-pays et multi-parties prenantes</li>
+          <li>Approche structurée, orientée résultats et amélioration continue</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>Rare dual expertise: HRIS / HR Access + KYC / AML</li>
+          <li>Strong ability to lead delivery, governance and teams</li>
+          <li>Used to multi-country and multi-stakeholder environments</li>
+          <li>Structured, results-oriented and continuous improvement mindset</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="experience" style="border-top: 1px solid var(--line);">
-    <div class="section-header fade-in">
+  <section id="expertise">
+    <div class="section-header">
       <span class="section-num">02</span>
-      <h2 class="section-title">Parcours professionnel</h2>
+      <h2 class="section-title"><span class="inline-fr">Expertise</span><span class="inline-en">Expertise</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <div class="timeline">
-
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Chef de Projet Senior / Delivery Manager</div>
-            <div class="exp-org">Vneuron — Tunis, Tunisie</div>
-          </div>
-          <span class="exp-date">Jan. 2022 — Aujourd’hui</span>
-        </div>
-        <div class="exp-body">
-          <p>
-            Pilotage d’un portefeuille de programmes de conformité et de transformation pour des institutions financières, banques et groupes multi-filiales.
-          </p>
-          <ul class="exp-tasks">
-            <li>Animation des comités et sécurisation de la gouvernance projet.</li>
-            <li>Maintien d’un service client d’excellence dans des environnements complexes.</li>
-            <li>Planification, mobilisation et disponibilité des ressources de delivery.</li>
-            <li>Respect des délais, du périmètre et de la charge de travail.</li>
-            <li>Coordination de programmes KYC, AML, TFS et FATCA à l’échelle locale et groupe.</li>
-          </ul>
-        </div>
+    <div class="expertise-grid">
+      <div class="card">
+        <h3>HRIS / HR Access</h3>
+        <ul class="bullet-list" data-lang="fr">
+          <li>HR Access V3 / V5 / Suite 7 / Suite 9 / HR4YOU</li>
+          <li>Paie / GA / Talent Management</li>
+          <li>Implémentation / migration / TMA</li>
+          <li>Support applicatif / delivery</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>HR Access V3 / V5 / Suite 7 / Suite 9 / HR4YOU</li>
+          <li>Payroll / HR Admin / Talent Management</li>
+          <li>Implementation / migration / AMS</li>
+          <li>Application support / delivery</li>
+        </ul>
       </div>
-
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Business Delivery Manager — MEA</div>
-            <div class="exp-org">Sopra HR Software</div>
-          </div>
-          <span class="exp-date">Août 2014 — Déc. 2021</span>
-        </div>
-        <div class="exp-body">
-          <p>
-            Évolution progressive de consultante HRAccess à Business Delivery Manager, avec pilotage de programmes internationaux et gestion d’un portefeuille clients multi-pays en Afrique, Europe et Moyen-Orient.
-          </p>
-          <ul class="exp-tasks">
-            <li>Gestion d’un portefeuille de plus de 30 clients sur la région MEA.</li>
-            <li>Pilotage de la capacité de delivery et coordination d’équipes jusqu’à 10 personnes.</li>
-            <li>Gestion d’un périmètre de projets entre 100 K€ et 400 K€.</li>
-            <li>Négociation des renouvellements AMS, extensions de licences et conditions contractuelles.</li>
-            <li>Gestion des escalades critiques et contribution à l’amélioration de la satisfaction client.</li>
-            <li>Pilotage simultané jusqu’à 10 projets en parallèle.</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3><span class="inline-fr">Conformité bancaire</span><span class="inline-en">Banking Compliance</span></h3>
+        <ul class="bullet-list" data-lang="fr">
+          <li>KYC / AML / FATCA / TFS</li>
+          <li>Projets réglementaires multi-pays</li>
+          <li>Coordination filiales / parties prenantes</li>
+          <li>Gestion des risques et gouvernance</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>KYC / AML / FATCA / TFS</li>
+          <li>Multi-country regulatory projects</li>
+          <li>Subsidiary and stakeholder coordination</li>
+          <li>Risk management and governance</li>
+        </ul>
       </div>
-
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Chef de Projet — Migration HRAccess V7 → Suite 9</div>
-            <div class="exp-org">Sopra HR Software — Magasin Général — Tunis, Tunisie</div>
-          </div>
-          <span class="exp-date">Mai 2021 — Déc. 2021</span>
-        </div>
-        <div class="exp-body">
-          <p>Responsable de la livraison de bout en bout du projet de migration HRAccess V7 → Suite 9.</p>
-          <ul class="exp-tasks">
-            <li>Suivi opérationnel, support client et gestion proactive des risques.</li>
-            <li>Animation des comités de suivi et de pilotage pour fluidifier les décisions.</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3><span class="inline-fr">Management & Delivery</span><span class="inline-en">Management & Delivery</span></h3>
+        <ul class="bullet-list" data-lang="fr">
+          <li>Planning / budget / KPI</li>
+          <li>Gestion des risques et escalades</li>
+          <li>Management d’équipes 10+ personnes</li>
+          <li>Gouvernance client et excellence de delivery</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>Planning / budget / KPI</li>
+          <li>Risk and escalation management</li>
+          <li>Managing teams of 10+ people</li>
+          <li>Client governance and delivery excellence</li>
+        </ul>
       </div>
-
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Responsable Domaine Interfaces — HRAccess</div>
-            <div class="exp-org">Sopra HR Software — Orange — France</div>
-          </div>
-          <span class="exp-date">Avr. 2020 — Jan. 2021</span>
-        </div>
-        <div class="exp-body">
-          <p>Parcours de 7 ans au sein de Sopra HR Software, avec une évolution progressive de la consultation HRAccess vers le delivery management régional et la supervision d’un portefeuille multi-clients en Afrique, Europe et Moyen-Orient.</p>
-          <ul class="exp-tasks">
-            <li>Responsable de la livraison des interfaces en communication avec HRAccess.</li>
-            <li>Suivi opérationnel des intégrations et coordination des dépendances.</li>
-            <li>Support client et prospection de nouveaux développements.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Responsable Domaine Social — Filiale Groupe</div>
-            <div class="exp-org">Sopra HR Software — Attijariwafa Bank — Casablanca, Maroc</div>
-          </div>
-          <span class="exp-date">Fév. 2019 — Mar. 2020</span>
-        </div>
-        <div class="exp-body">
-          <ul class="exp-tasks">
-            <li>Responsable de la livraison du domaine social pour la filiale du groupe dans HRAccess.</li>
-            <li>Déploiement d’un nouveau portail employés et managers.</li>
-            <li>Suivi des intégrations et identification de nouveaux besoins d’évolution.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Responsable Domaine & Consultante Senior</div>
-            <div class="exp-org">Sopra HR Software — Alger, Algérie — Multi-clients</div>
-          </div>
-          <span class="exp-date">Fév. 2017 — Jan. 2019</span>
-        </div>
-        <div class="exp-body">
-          <ul class="exp-tasks">
-            <li>Développement, maintenance et tests sur projets d’implémentation et migration HRAccess.</li>
-            <li>Gestion des risques, audit et communication interne / externe.</li>
-            <li>Animation de sessions de formation technique et fonctionnelle.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Business Consultant — Responsable Domaine Social</div>
-            <div class="exp-org">Sopra HR Software — Le Caire, Égypte</div>
-          </div>
-          <span class="exp-date">Avr. 2018 — Juil. 2018</span>
-        </div>
-        <div class="exp-body">
-          <ul class="exp-tasks">
-            <li>Animation d’ateliers fonctionnels et rédaction des spécifications.</li>
-            <li>Contrôle qualité des livrables fonctionnels et techniques.</li>
-            <li>Suivi de livraison, support client et gestion des risques.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Consultante — Responsable Domaine Migration</div>
-            <div class="exp-org">Sopra HR Software — Casablanca, Maroc</div>
-          </div>
-          <span class="exp-date">Août 2016 — Jan. 2017</span>
-        </div>
-        <div class="exp-body">
-          <ul class="exp-tasks">
-            <li>Développement et tests dans le cadre de projets de migration HRAccess.</li>
-            <li>Animation de formations techniques et fonctionnelles.</li>
-            <li>Avant-vente : démonstrations produit, proof of concept et conception de solutions.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item fade-in">
-        <div class="exp-header">
-          <div>
-            <div class="exp-title">Consultante HRAccess</div>
-            <div class="exp-org">Sopra HR Software — Multi-pays MEA & Europe</div>
-          </div>
-          <span class="exp-date">Août 2014 — Août 2016</span>
-        </div>
-        <div class="exp-body">
-          <ul class="exp-tasks">
-            <li>Implémentation, migration et support HRAccess sur des projets internationaux.</li>
-            <li>Interventions en Italie, France, Côte d’Ivoire, Gabon et Tunisie.</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <section id="expertise" style="border-top: 1px solid var(--line);">
-    <div class="section-header fade-in">
+  <section id="figures">
+    <div class="section-header">
       <span class="section-num">03</span>
-      <h2 class="section-title">Expertises & compétences</h2>
+      <h2 class="section-title"><span class="inline-fr">Chiffres clés</span><span class="inline-en">Key Figures</span></h2>
       <div class="section-line"></div>
     </div>
+    <div class="figures-grid">
+      <div class="figure-card"><div class="figure-value">11+</div><div class="figure-label"><span class="inline-fr">années d’expérience</span><span class="inline-en">years experience</span></div></div>
+      <div class="figure-card"><div class="figure-value">30+</div><div class="figure-label"><span class="inline-fr">clients gérés</span><span class="inline-en">clients managed</span></div></div>
+      <div class="figure-card"><div class="figure-value">19+</div><div class="figure-label"><span class="inline-fr">pays couverts</span><span class="inline-en">countries covered</span></div></div>
+      <div class="figure-card"><div class="figure-value">10+</div><div class="figure-label"><span class="inline-fr">projets en parallèle</span><span class="inline-en">parallel projects</span></div></div>
+      <div class="figure-card"><div class="figure-value">10+</div><div class="figure-label"><span class="inline-fr">personnes managées</span><span class="inline-en">team members managed</span></div></div>
+    </div>
+  </section>
 
-    <div class="grid-3 fade-in">
-      <div class="skill-card">
-        <div class="skill-card-title">Delivery & Leadership</div>
-        <p>Gouvernance, coordination de programmes, pilotage multi-pays, gestion des ressources, relation client, conduite du changement et pilotage budgétaire.</p>
-        <div class="skill-tags">
-          <span class="skill-tag highlight">Management 3.0 ✓ Certifié 2024</span>
-          <span class="skill-tag">Gestion de projet</span>
-          <span class="skill-tag">Gestion d’équipe</span>
-          <span class="skill-tag">P&amp;L Management</span>
-          <span class="skill-tag">Business Development</span>
-          <span class="skill-tag">Comités & gouvernance</span>
-          <span class="skill-tag">Avant-vente</span>
-        </div>
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title"><span class="inline-fr">Expérience</span><span class="inline-en">Experience</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="experience-grid">
+      <div class="job-card">
+        <div class="job-role"><span class="inline-fr">Chef de Projet | Business Analyst</span><span class="inline-en">Project Manager | Business Analyst</span></div>
+        <div class="job-org">Vneuron</div>
+        <div class="job-date">2022 – <span class="inline-fr">Aujourd’hui</span><span class="inline-en">Present</span></div>
+        <ul class="bullet-list" data-lang="fr">
+          <li>Pilotage de projets internationaux avec coordination des parties prenantes métiers et techniques</li>
+          <li>Suivi du scope, du planning, des priorités et de la qualité des livrables</li>
+          <li>Analyse des besoins métier et accompagnement des équipes dans la formalisation des solutions</li>
+          <li>Animation de réunions de cadrage, gouvernance projet et arbitrages opérationnels</li>
+          <li>Production de reporting projet et gestion proactive des risques</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>Led international projects with coordination of business and technical stakeholders</li>
+          <li>Managed scope, planning, priorities and deliverable quality</li>
+          <li>Analyzed business needs and supported teams in shaping solutions</li>
+          <li>Facilitated scoping workshops, project governance and operational decisions</li>
+          <li>Produced project reporting and proactively managed risks</li>
+        </ul>
       </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">Compliance & Risk</div>
-        <p>Pilotage de programmes réglementaires et de transformation autour des parcours client, de la surveillance, du screening et du delivery sur environnements complexes.</p>
-        <div class="skill-tags">
-          <span class="skill-tag highlight">KYC</span>
-          <span class="skill-tag highlight">AML</span>
-          <span class="skill-tag highlight">TFS</span>
-          <span class="skill-tag">FATCA</span>
-          <span class="skill-tag">REIS Integration</span>
-          <span class="skill-tag">Portefeuilles multi-filiales</span>
-          <span class="skill-tag">Excellence opérationnelle</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-title">SIRH / HRAccess & Technique</div>
-        <p>Expertise SIRH historique sur HRAccess en contexte de migration, déploiement, maintenance, interfaces et projets RH à l’international.</p>
-        <div class="skill-tags">
-          <span class="skill-tag highlight">HRA V3.e · V5 · Suite 7 · Suite 9</span>
-          <span class="skill-tag">Gestion administrative</span>
-          <span class="skill-tag">Paie & Post-Paie</span>
-          <span class="skill-tag">Migration</span>
-          <span class="skill-tag">Interfaces</span>
-          <span class="skill-tag">SQL · PL/SQL · T-SQL</span>
-          <span class="skill-tag">Java · JavaScript</span>
-          <span class="skill-tag">UNIX / Linux Shell</span>
-        </div>
+      <div class="job-card">
+        <div class="job-role"><span class="inline-fr">Delivery Manager | Consultante Senior | Chef de Projet</span><span class="inline-en">Delivery Manager | Senior Consultant | Project Manager</span></div>
+        <div class="job-org">Sopra HR Software</div>
+        <div class="job-date">2014 – 2021</div>
+        <ul class="bullet-list" data-lang="fr">
+          <li>Pilotage de projets HR Access avec engagement sur le respect du scope, du planning, du budget et de la qualité des livrables</li>
+          <li>Gestion d’un portefeuille clients international et coordination d’équipes de plus de 10 personnes</li>
+          <li>Animation d’ateliers de cadrage, rédaction de spécifications technico-fonctionnelles et accompagnement client</li>
+          <li>Organisation de la formation, de la recette et de la mise en production des solutions</li>
+          <li>Gestion du delivery, des SLA, des escalades et de la transformation RH multi-pays</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>Led HR Access projects with full ownership of scope, planning, budget and deliverable quality</li>
+          <li>Managed an international client portfolio and coordinated teams of more than 10 people</li>
+          <li>Facilitated scoping workshops, wrote techno-functional specifications and supported clients</li>
+          <li>Organized training, testing and production go-live activities</li>
+          <li>Managed delivery, SLA commitments, escalations and multi-country HR transformation</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <div class="portfolio-groups fade-in">
-      <div class="portfolio-group-card">
-        <h3>Programmes multi-filiales</h3>
-        <p>Les programmes les plus structurants du portefeuille, avec un fort enjeu de coordination transverse, de gouvernance groupe et de déploiement à grande échelle.</p>
-        <div class="portfolio-project-list">
-          <div class="portfolio-project-item">
-            <strong>ORAGROUP</strong>
-            <div class="portfolio-meta"><span>12 filiales</span><span>2022–2025</span><span>KYC · AML · TFS</span></div>
-            Programme majeur avec intégration REIS avec Amplitude et pilotage de grande ampleur.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>BSIC</strong>
-            <div class="portfolio-meta"><span>10 filiales</span><span>2025</span><span>KYC · AML · TFS</span></div>
-            Déploiement sur 10 filiales avec coordination transverse et maîtrise de la charge.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>SUNU</strong>
-            <div class="portfolio-meta"><span>12 filiales</span><span>2025–2026</span><span>KYC · AML</span></div>
-            Programme groupe à forte complexité, centré sur la coordination multi-entités et la qualité d’exécution.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>BNI</strong>
-            <div class="portfolio-meta"><span>3 filiales</span><span>2025–2026</span><span>KYC · AML · TFS</span></div>
-            Programme multi-filiales avec gouvernance, pilotage des ressources et sécurisation du delivery.
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-group-card">
-        <h3>Projets réglementaires clés</h3>
-        <p>Projets mono-pays à forte valeur business, conduits avec une exigence élevée sur le delivery, la gouvernance et la satisfaction client.</p>
-        <div class="portfolio-project-list">
-          <div class="portfolio-project-item">
-            <strong>ENDA · Tunisie</strong>
-            <div class="portfolio-meta"><span>2022–2024</span><span>KYC · AML · TFS</span></div>
-            Projet long terme avec gouvernance récurrente, stabilité du delivery et maintien de la satisfaction client.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>LBA · Sénégal</strong>
-            <div class="portfolio-meta"><span>2022–2024</span><span>KYC · AML · TFS</span></div>
-            Mission de continuité et de delivery sur un périmètre conformité complet.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>TRUST · Algérie</strong>
-            <div class="portfolio-meta"><span>2022–2024</span><span>KYC · AML</span></div>
-            Projet de conformité piloté sur la durée, avec gouvernance structurée et qualité de service maîtrisée.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>BHS · Sénégal</strong>
-            <div class="portfolio-meta"><span>2025–2026</span><span>KYC · AML · TFS</span></div>
-            Programme complet avec intégration REIS avec Carthago et coordination multi-dimensions.
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-group-card">
-        <h3>Déploiements ciblés & intégrations</h3>
-        <p>Projets spécialisés ou ciblés, utiles à présenter rapidement sans surcharger le portfolio avec un tableau dense.</p>
-        <div class="portfolio-project-list">
-          <div class="portfolio-project-item">
-            <strong>QFH · Qatar</strong>
-            <div class="portfolio-meta"><span>2025</span><span>AML</span></div>
-            Projet AML mené avec un haut niveau d’exigence sur les engagements de delivery.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>QGI · Qatar</strong>
-            <div class="portfolio-meta"><span>2025</span><span>KYC · AML</span></div>
-            Pilotage d’un programme KYC/AML avec animation de la gouvernance et sécurisation des ressources.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>SPT · Togo</strong>
-            <div class="portfolio-meta"><span>2025–2026</span><span>KYC · AML · TFS</span></div>
-            Projet intégré avec gouvernance active et suivi rapproché des engagements.
-          </div>
-          <div class="portfolio-project-item">
-            <strong>Autres références 2025–2026</strong>
-            <div class="portfolio-meta"><span>BFI · BPBF · BRIDGE · BSCA · IBB Togo · IBBANK Burkina · MANSA · UBCI · UTB · WBI</span></div>
-            Portefeuille actif couvrant plusieurs pays, modules et contextes réglementaires.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="border-top: 1px solid var(--line);">
-    <div class="section-header fade-in">
+  <section id="projects">
+    <div class="section-header">
       <span class="section-num">05</span>
-      <h2 class="section-title">Couverture géographique</h2>
+      <h2 class="section-title">
+        <span class="inline-fr">Projets</span>
+        <span class="inline-en">Projects</span>
+      </h2>
       <div class="section-line"></div>
     </div>
 
-    <div class="coverage-grid fade-in">
-      <div class="coverage-card">
-        <h3>Afrique de l’Ouest</h3>
-        <p>Zone la plus dense du portefeuille, avec forte présence sur les groupes bancaires et programmes multi-filiales.</p>
-        <div class="mini-tags-wrap">
-          <span>Burkina Faso</span>
-          <span>Côte d’Ivoire</span>
-          <span>Sénégal</span>
-          <span>Togo</span>
-          <span>Mauritanie</span>
-          <span>Mali</span>
-          <span>Bénin</span>
-          <span>Niger</span>
-          <span>Guinée</span>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>HRIS / HR Access</h3>
+        <p class="small-muted" data-lang="fr">Clients majeurs accompagnés sur des projets HR Access / SIRH dans plusieurs pays.</p>
+        <p class="small-muted" data-lang="en">Major clients supported across multiple countries on HR Access / HRIS projects.</p>
+
+        <div class="project-items">
+          <div class="project-item"><strong>France</strong><div class="small-muted">Orange France • AMUE</div></div>
+          <div class="project-item"><strong>Tunisia</strong><div class="small-muted">Shell • BIAT • Magasin Général • Sofrecom + others</div></div>
+          <div class="project-item"><strong>Algeria</strong><div class="small-muted">Algeria Telecom • Danone • CPA + others</div></div>
+          <div class="project-item"><strong>Morocco</strong><div class="small-muted">Attijariwafa Bank • Morocco Telecom</div></div>
+          <div class="project-item"><strong>Egypt</strong><div class="small-muted">EFG Hermes</div></div>
         </div>
       </div>
 
-      <div class="coverage-card">
-        <h3>Afrique centrale & du Nord</h3>
-        <p>Interventions sur des dispositifs KYC / AML et programmes structurants dans des environnements durables.</p>
-        <div class="mini-tags-wrap">
-          <span>Cameroun</span>
-          <span>Tchad</span>
-          <span>Gabon</span>
-          <span>Congo</span>
-          <span>RDC</span>
-          <span>Centrafrique</span>
-          <span>Algérie</span>
-          <span>Tunisie</span>
-        </div>
-      </div>
+      <div class="project-card">
+        <h3><span class="inline-fr">Conformité bancaire</span><span class="inline-en">Banking Compliance</span></h3>
+        <p class="small-muted" data-lang="fr">Projets menés pour des groupes bancaires et assureurs panafricains.</p>
+        <p class="small-muted" data-lang="en">Projects delivered for pan-African banking and insurance groups.</p>
 
-      <div class="coverage-card">
-        <h3>Moyen-Orient</h3>
-        <p>Déploiements ciblés au Qatar sur des projets AML et KYC/AML, avec exigences élevées en delivery management.</p>
-        <div class="mini-tags-wrap">
-          <span>Qatar</span>
-          <span>AML</span>
-          <span>KYC</span>
-          <span>Gouvernance</span>
-          <span>Delivery</span>
+        <div class="project-items">
+          <div class="project-item"><strong>ORAGROUP (12 countries)</strong></div>
+          <div class="project-item"><strong>BSIC (10 countries)</strong></div>
+          <div class="project-item"><strong>SUNU Assurance (13+ entities)</strong></div>
+          <div class="project-item">
+            <strong><span class="inline-fr">Autres clients</span><span class="inline-en">Additional clients</span></strong>
+            <div class="small-muted">TRUST • BADF • BPBF • UBCI • Enda Cash • QGI • SPT • WBI • LBA • BHS</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="references" style="border-top: 1px solid var(--line);">
-    <div class="section-header fade-in">
+  <section id="opportunities">
+    <div class="section-header">
       <span class="section-num">06</span>
-      <h2 class="section-title">Références historiques internationales</h2>
+      <h2 class="section-title"><span class="inline-fr">Opportunités</span><span class="inline-en">Open to Opportunities</span></h2>
       <div class="section-line"></div>
     </div>
-
-    <div class="history-grid fade-in">
-      <div class="history-card">
-        <h3>Afrique du Nord</h3>
-        <p>Références consolidées sur des contextes RH, SIRH, transformation et delivery.</p>
-        <div class="history-row">
-          <span>Tunisie — Shell</span>
-          <span>STIAL</span>
-          <span>Sofrecom</span>
-          <span>Magasin Général</span>
-          <span>UBCI</span>
-          <span>UHD</span>
-          <span>BNA</span>
-          <span>BIAT</span>
-          <span>ABC</span>
-          <span>Algérie — SEAAL</span>
-          <span>Red Med</span>
-          <span>CPA</span>
-          <span>ENTMV</span>
-          <span>BNPP</span>
-          <span>Renault</span>
-          <span>Algérie Telecom</span>
-          <span>Danone Algérie</span>
-        </div>
+    <div class="opps-grid">
+      <div class="card">
+        <h3 data-lang="fr">Postes recherchés</h3>
+        <h3 data-lang="en">Target Roles</h3>
+        <ul class="bullet-list" data-lang="fr">
+          <li>Chef de Projet Senior</li>
+          <li>Delivery Manager</li>
+          <li>Responsable SIRH</li>
+          <li>PMO Lead</li>
+          <li>Business Analyst Senior</li>
+        </ul>
+        <ul class="bullet-list" data-lang="en">
+          <li>Senior Project Manager</li>
+          <li>Delivery Manager</li>
+          <li>HRIS Manager</li>
+          <li>PMO Lead</li>
+          <li>Senior Business Analyst</li>
+        </ul>
       </div>
-
-      <div class="history-card">
-        <h3>Afrique subsaharienne</h3>
-        <p>Interventions multi-secteurs : banques, utilities, télécom, industrie et services.</p>
-        <div class="history-row">
-          <span>Sénégal — Suez</span>
-          <span>BOA</span>
-          <span>SENEAU</span>
-          <span>Côte d’Ivoire — CIE</span>
-          <span>Gabon — BNP Gabon</span>
-          <span>Oil Libya</span>
-        </div>
+      <div class="card">
+        <h3><span class="inline-fr">Mobilité</span><span class="inline-en">Mobility</span></h3>
+        <p data-lang="fr">Disponible pour des opportunités en France, au Luxembourg et en Europe, en environnement conseil, client final ou transformation digitale.</p>
+        <p data-lang="en">Open to opportunities across France, Luxembourg and Europe in consulting, end-client or digital transformation environments.</p>
       </div>
+    </div>
+  </section>
 
-      <div class="history-card">
-        <h3>Europe & MENA</h3>
-        <p>Références de transformation RH et de projets d’intégration / migration.</p>
-        <div class="history-row">
-          <span>France — Orange</span>
-          <span>AMUE</span>
-          <span>BNP Paribas</span>
-          <span>Merck</span>
-          <span>British Gas</span>
-          <span>Maroc — Attijariwafa Bank</span>
-          <span>COMANAV</span>
-          <span>Marsa Maroc</span>
-          <span>Orange Maroc</span>
-          <span>Égypte — EFG Hermes</span>
-          <span>Suez Egypt</span>
-          <span>Italie — CARIPARMA</span>
+  <section id="contact">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3><span class="inline-fr">Échangeons</span><span class="inline-en">Let’s Connect</span></h3>
+        <p data-lang="fr">Je reste ouverte aux opportunités de management de projet, delivery, SIRH / HR Access et transformation dans des environnements complexes et internationaux.</p>
+        <p data-lang="en">I am open to project management, delivery, HRIS / HR Access and transformation opportunities in complex and international environments.</p>
+        <div class="hero-contacts">
+          <a href="mailto:khamassi.farah@gmail.com" class="contact-chip">khamassi.farah@gmail.com</a>
+          <a href="tel:+21622716187" class="contact-chip">+216 22 716 187</a>
+          <a href="https://www.linkedin.com/in/farah-khamassi-081b9764/" target="_blank" class="contact-chip">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -1328,26 +460,22 @@
 
   <footer>
     <div>
-      <div class="footer-name">Farah Khamassi</div>
-      <div style="margin-top:4px;">Senior Project Manager · Business Delivery Manager · Portfolio Delivery & Governance</div>
+      <strong>Farah Khamassi</strong><br>
+      <span class="inline-fr">Chef de Projet Senior | Delivery Manager | Consultante Senior | Business Analyst</span>
+      <span class="inline-en">Senior Project Manager | Delivery Manager | Senior Consultant | Business Analyst</span>
     </div>
-    <div style="text-align:right;">
-      <div>khamassi.farah@gmail.com</div>
-      <div style="margin-top:4px;">+216 22 716 187</div>
-    </div>
+    <div>khamassi.farah@gmail.com</div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('portfolioLang', lang);
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    }
+    const savedLang = localStorage.getItem('portfolioLang') || 'fr';
+    setLang(savedLang);
   </script>
 </body>
 </html>
